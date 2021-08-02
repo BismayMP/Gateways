@@ -61,7 +61,6 @@ describe('Gateways controller operations ', () => {
     await gateway.save()
     await deleteGateway(gateway._id)
     const deletedObject = await Gateway.findById(gateway._id)
-    //console.log(deletedObject)
     expect(deletedObject).to.be.null
   })
 })
