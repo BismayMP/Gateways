@@ -1,0 +1,29 @@
+.card-root {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 1rem;
+  &:hover {
+    transform: scale(1.01);
+  }
+}
+
+.expand {
+  transform: rotate(0deg);
+  margin-left: auto !important;
+  padding: 10px !important;
+  transition: all 0.1s linear;
+}
+
+.expandOpen {
+  transform: rotate(180deg);
+}
+
+.add-device-modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-child-cont {
+  padding: 2rem;
+}

@@ -1,5 +1,6 @@
 require('dotenv').config()
 const express = require('express')
+const cors = require('cors')
 const { json, urlencoded } = express
 const cookieParser = require('cookie-parser')
 const logger = require('morgan')
@@ -11,6 +12,7 @@ app.use(logger('dev'))
 app.use(json())
 app.use(urlencoded({ extended: false }))
 app.use(cookieParser())
+app.use(cors())
 
 app.use('/api/gateways', gatewaysRouter)
 
