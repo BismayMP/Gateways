@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import {
   Button,
@@ -12,15 +12,12 @@ import {
   Typography,
 } from '@material-ui/core'
 
-const DeviceForm = () => {
-  const {
-    register,
-    handleSubmit,
-    control,
-    watch,
-    formState: { errors },
-  } = useForm()
-  const onSubmit = (data) => console.log(data)
+const DeviceForm = ({ onSubmitDevice }) => {
+  const { register, handleSubmit, control } = useForm()
+
+  const onSubmit = (data) => {
+    onSubmitDevice(data)
+  }
 
   return (
     <Grid container justifyContent={'center'} alignItems={'center'} spacing={3}>

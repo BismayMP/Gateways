@@ -58,7 +58,7 @@ router.put('/:id', async (req, res, next) => {
     if (!obj) {
       return res.status(404).send('Gateway not found')
     }
-    return res.send(obj)
+    return res.status(obj.code || 200).send(obj)
   } catch (error) {
     res.status(500).send(error)
   }

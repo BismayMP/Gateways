@@ -29,6 +29,14 @@ const createGateway = async (gateway) => {
 }
 
 const updateGateway = async (id, gateway) => {
+  if (
+    !isIp.v4(gateway.ipv4) ||
+    (gateway.peripheral &&
+      gateway.peripheral.length &&
+      gateway.peripheral.length > 10)
+  ) {
+    return { code: 400 }
+  }
   return await Gateway.findOneAndUpdate({ _id: id }, gateway, { new: true })
 }
 

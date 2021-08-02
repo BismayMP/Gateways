@@ -9,7 +9,6 @@ import {
   Grid,
   IconButton,
   Modal,
-  Paper,
   Typography,
 } from '@material-ui/core'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
@@ -26,6 +25,26 @@ const CardComponent = ({ gateway, onDelete }) => {
 
   const handleClose = () => {
     setOpenModal(false)
+  }
+
+  const handleSubmitDevice = (data) => {
+    const peripheral = item.peripheral
+    peripheral.push(data)
+    axios({
+      method: 'PUT',
+      url: `${apiUrl}gateways/${item._id}`,
+      data: {
+        ...item,
+        peripheral,
+      },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          setItem(res.data)
+          setOpenModal(false)
+        }
+      })
+      .catch((error) => console.error(error))
   }
 
   const handleExpandClick = () => {
@@ -127,7 +146,7 @@ const CardComponent = ({ gateway, onDelete }) => {
               <Button
                 variant="outlined"
                 color="primary"
-                disabled={item.peripheral && item.peripheral.length > 10}
+                disabled={item.peripheral && item.peripheral.length >= 10}
                 disableElevation
                 onClick={handleAddDevice}
                 size="small"
@@ -158,7 +177,7 @@ const CardComponent = ({ gateway, onDelete }) => {
         container={() => rootRef.current}
       >
         <div className="bg-white modal-child-cont">
-          <DeviceForm />
+          <DeviceForm onSubmitDevice={handleSubmitDevice} />
         </div>
       </Modal>
     </>
