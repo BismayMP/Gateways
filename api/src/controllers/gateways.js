@@ -16,18 +16,20 @@ const retriveGatewayById = async (id) => {
 }
 
 const createGateway = async (gateway) => {
-  if (!isIp.v4(gateway.ipv4)) {
+  if (
+    !isIp.v4(gateway.ipv4) ||
+    (gateway.peripheral &&
+      gateway.peripheral.length &&
+      gateway.peripheral.length > 10)
+  ) {
     return { code: 400 }
   }
   const obj = new Gateway(gateway)
-  console.log(obj)
-  const res = await obj.save()
-  console.log(res)
-  return res
+  return await obj.save()
 }
 
 const updateGateway = async (id, gateway) => {
-  return await Gateway.updateOne({ _id: id }, gateway)
+  return await Gateway.findOneAndUpdate({ _id: id }, gateway, { new: true })
 }
 
 const deleteGateway = async (id) => {

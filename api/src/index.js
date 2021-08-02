@@ -4,7 +4,11 @@ const app = require('./server.js')
 const mongoose = require('mongoose')
 const { connect, connection } = mongoose
 
-const mongoUri = 'mongodb://localhost:27017:27017/gateways' //process.env.MONGO_URL
+const mongodbHost = process.env.MONGO_URL
+const mongodbName = process.env.DB_NAME
+
+const mongoUri =
+  `${mongodbHost + mongodbName}` || `mongodb://localhost:27017/gateways`
 connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,

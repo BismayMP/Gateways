@@ -1,5 +1,5 @@
 const { Schema, model } = require('mongoose')
-const { peripheralSchema } = require('./peripheral')
+const peripheralSchema = require('./peripheral')
 const isIp = require('is-ip')
 
 const gatewaySchema = new Schema({
@@ -10,7 +10,7 @@ const gatewaySchema = new Schema({
     unique: true,
     validate: {
       validator: (v) => {
-        return isIp.v4(ipv4)
+        return isIp.v4(v)
       },
       message: (props) => `${props.value} is not a valid ipv4!`,
     },

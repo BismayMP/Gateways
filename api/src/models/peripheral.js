@@ -6,6 +6,4 @@ const peripheralSchema = new Schema({
   status: { type: String, required: true, options: ['online', 'offline'] },
 })
 
-const Peripheral = model('Peripheral', peripheralSchema)
-
-module.exports = { Peripheral, peripheralSchema }
+module.exports = peripheralSchema

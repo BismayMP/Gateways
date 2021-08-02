@@ -1,4 +1,5 @@
 const { Router } = require('express')
+const mongoose = require('mongoose')
 const {
   createGateway,
   retriveAllgateways,
@@ -21,12 +22,15 @@ router.get('/', async (req, res, next) => {
 //GET Retrive gateways by id
 router.get('/:id', async (req, res, next) => {
   try {
-    const gateway = await retriveGatewayById(req.query.id)
-    if (gateway) {
-      res.status(200).send(gateway)
-    } else {
-      res.sendStatus(404)
+    const id = req.params.id
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).send('Invalid object id')
     }
+    const gateway = await retriveGatewayById(id)
+    if (!gateway) {
+      return res.status(404).send('Gateway not found')
+    }
+    return res.status(200).send(gateway)
   } catch (error) {
     res.status(500).send(error)
   }
@@ -36,7 +40,6 @@ router.get('/:id', async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   try {
     const gateway = req.body
-    console.log(gateway)
     const obj = await createGateway(gateway)
     res.status(obj.code || 200).send(obj)
   } catch (error) {
@@ -44,15 +47,18 @@ router.post('/', async (req, res, next) => {
   }
 })
 
-router.put('/', async (req, res, next) => {
+router.put('/:id', async (req, res, next) => {
   try {
-    const gateway = req.body
-    const obj = await updateGateway(gateway._id, gateway)
-    if (obj) {
-      res.sendStatus(201)
-    } else {
-      res.sendStatus(404)
+    const id = req.params.id
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+      return res.status(400).send('Invalid object id')
     }
+    const gateway = req.body
+    const obj = await updateGateway(id, gateway)
+    if (!obj) {
+      return res.status(404).send('Gateway not found')
+    }
+    return res.send(obj)
   } catch (error) {
     res.status(500).send(error)
   }
@@ -60,7 +66,7 @@ router.put('/', async (req, res, next) => {
 
 router.delete('/:id', async (req, res, next) => {
   try {
-    const gateway = await deleteGateway(req.query.id)
+    const gateway = await deleteGateway(req.params.id)
     res.status(200).send(gateway)
   } catch (error) {
     res.status(500).send(error)

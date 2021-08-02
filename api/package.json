@@ -4,22 +4,27 @@
   "private": true,
   "scripts": {
     "dev": "nodemon ./src/index.js",
-    "test": "jest"
+    "test": "mocha --timeout 11000 --exit",
+    "coverage": "npm run bat && nyc --reporter=html --reporter=text npm test"
   },
   "dependencies": {
+    "@shelf/jest-mongodb": "^2.0.1",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^10.0.0",
     "express": "~4.16.1",
     "is-ip": "^3.1.0",
+    "mongodb-memory-server": "^7.2.0",
     "mongoose": "^5.13.5",
     "morgan": "~1.9.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
-    "jest": "^27.0.6",
+    "chai": "^4.3.4",
+    "mocha": "^9.0.3",
     "nodemon": "^2.0.12",
+    "nyc": "^15.1.0",
     "superagent": "^6.1.0",
     "supertest": "^6.1.4"
   }
