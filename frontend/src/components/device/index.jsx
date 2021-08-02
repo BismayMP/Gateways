@@ -18,9 +18,11 @@ const DeviceComponent = ({ device, onStatusChange, onDelete }) => {
 
   return (
     <div className="device">
-      <Typography color="textSecondary" variant="body1" component="p">
-        {device.uid}
-      </Typography>
+      {device.uid !== undefined && (
+        <Typography color="textSecondary" variant="body1" component="p">
+          UID: {device.uid}
+        </Typography>
+      )}
       <Typography color="textSecondary" variant="body1" component="p">
         name: {device.vendor}
       </Typography>

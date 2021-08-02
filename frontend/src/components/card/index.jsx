@@ -16,7 +16,7 @@ import DeviceComponent from '../device'
 import axios from 'axios'
 import DeviceForm from '../forms/device'
 
-const CardComponent = ({ gateway, onDelete }) => {
+const CardComponent = ({ gateway, onDelete, showDetails }) => {
   const apiUrl = process.env.REACT_APP_API
   const [openModal, setOpenModal] = useState(false)
   const [expanded, setExpanded] = useState(false)
@@ -25,6 +25,10 @@ const CardComponent = ({ gateway, onDelete }) => {
 
   const handleClose = () => {
     setOpenModal(false)
+  }
+
+  const handleShowDetails = () => {
+    showDetails(item)
   }
 
   const handleSubmitDevice = (data) => {
@@ -113,8 +117,8 @@ const CardComponent = ({ gateway, onDelete }) => {
           </Typography>
           <Typography color="textSecondary" variant="body1" component="p">
             Peripheral devices:{' '}
-            {(item.peripheral && item.peripheral.length) || 0}{' '}
-            {item.peripheral && (
+            {(item.peripheral && item.peripheral.length) || 0}
+            {item.peripheral && item.peripheral.length ? (
               <IconButton
                 className={`expand ${expanded ? 'expandOpen' : ''}`}
                 onClick={handleExpandClick}
@@ -123,6 +127,8 @@ const CardComponent = ({ gateway, onDelete }) => {
               >
                 <ExpandMoreIcon />
               </IconButton>
+            ) : (
+              <></>
             )}
           </Typography>
           {item.peripheral && (
@@ -142,6 +148,17 @@ const CardComponent = ({ gateway, onDelete }) => {
             </Collapse>
           )}
           <Grid container spacing={2}>
+            <Grid item>
+              <Button
+                variant="outlined"
+                color="primary"
+                disableElevation
+                onClick={handleShowDetails}
+                size="small"
+              >
+                Go to details
+              </Button>
+            </Grid>
             <Grid item>
               <Button
                 variant="outlined"
@@ -171,7 +188,7 @@ const CardComponent = ({ gateway, onDelete }) => {
       <Modal
         open={openModal}
         onClose={handleClose}
-        className="add-device-modal"
+        className="modal"
         aria-labelledby="simple-modal-title"
         aria-describedby="simple-modal-description"
         container={() => rootRef.current}

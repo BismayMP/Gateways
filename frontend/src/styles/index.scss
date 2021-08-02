@@ -15,3 +15,16 @@ code {
 .bg-white {
   background-color: #fff;
 }
+
+.modal-child-cont {
+  padding: 2rem;
+  max-width: 90vw;
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -12,6 +12,7 @@ const mongoUri =
 connect(mongoUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: true,
 })
 
 const db = connection

@@ -17,14 +17,9 @@ const gatewaySchema = new Schema({
   },
   peripheral: {
     type: [peripheralSchema],
-    max: 10,
-    validate: {
-      validator: (v) => {
-        return v.length <= 10
-      },
-      message: (props) =>
-        `No gateway should have more than 10 peripheral devices!`,
-    },
+    default: undefined,
+    required: false,
+    validate: (v) => v == null || v.length > 0 || v.length < 10,
   },
 })
 
