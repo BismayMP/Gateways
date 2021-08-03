@@ -3,12 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "install": "concurrently \"cd api && npm install\" \"cd frontend && npm install\"",
+    "dev": "concurrently \"cd api && npm run dev\" \"cd frontend && npm start\"",
+    "test": "concurrently \"cd api && npm run test\" \"cd frontend && npm run test\""
   },
   "dependencies": {
+    "concurrently": "^6.2.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
-    "morgan": "~1.9.1"
+    "morgan": "~1.9.1",
+    "serve": "^12.0.0"
   }
 }

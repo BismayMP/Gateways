@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`home page test Snapshot testing 1`] = `
+<div
+  className="MuiContainer-root MuiContainer-maxWidthLg"
+>
+  <div
+    className="root"
+  >
+    <h1>
+       
+      No gateways available
+    </h1>
+    <div>
+      <div />
+    </div>
+  </div>
+  <button
+    aria-label="add"
+    className="MuiButtonBase-root MuiFab-root add-btn MuiFab-extended MuiFab-primary"
+    disabled={false}
+    onBlur={[Function]}
+    onClick={[Function]}
+    onDragLeave={[Function]}
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseLeave={[Function]}
+    onMouseUp={[Function]}
+    onTouchEnd={[Function]}
+    onTouchMove={[Function]}
+    onTouchStart={[Function]}
+    tabIndex={0}
+    type="button"
+  >
+    <span
+      className="MuiFab-label"
+    >
+      <svg
+        aria-hidden={true}
+        className="MuiSvgIcon-root"
+        focusable="false"
+        viewBox="0 0 24 24"
+      >
+        <path
+          d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"
+        />
+      </svg>
+       Gateway
+    </span>
+  </button>
+</div>
+`;

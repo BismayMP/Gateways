@@ -10,12 +10,58 @@ const ListComponent = ({ gateways, setGateways }) => {
   const [detailedView, setDetailedView] = useState(null)
   const rootRef = useRef(null)
 
+  const updateGaytewaysList = (data) => {
+    setDetailedView(data)
+    setGateways(gateways.map((item) => (item._id === data._id ? data : item)))
+  }
+
   const onDelete = (gateway) => {
     const list = gateways.filter((gtw) => gtw !== gateway)
     axios
       .delete(`${apiUrl}gateways/${gateway._id}`)
       .then((res) => {
         if (res.status === 200) setGateways(list)
+      })
+      .catch((error) => console.error(error))
+  }
+
+  const onDeviceStatusChange = (device) => {
+    const peripheral = detailedView.peripheral.map((item) => {
+      if (detailedView === device) {
+        detailedView.status = device.status === 'online' ? 'offline' : 'online'
+      }
+      return detailedView
+    })
+    axios({
+      method: 'PUT',
+      url: `${apiUrl}gateways/${detailedView._id}`,
+      data: {
+        ...detailedView,
+        peripheral,
+      },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          updateGaytewaysList(res.data)
+        }
+      })
+      .catch((error) => console.error(error))
+  }
+
+  const onDeleteDevice = (device) => {
+    const peripheral = detailedView.peripheral.filter((item) => item !== device)
+    axios({
+      method: 'PUT',
+      url: `${apiUrl}gateways/${detailedView._id}`,
+      data: {
+        ...detailedView,
+        peripheral,
+      },
+    })
+      .then((res) => {
+        if (res.status === 200) {
+          updateGaytewaysList(res.data)
+        }
       })
       .catch((error) => console.error(error))
   }
@@ -49,7 +95,11 @@ const ListComponent = ({ gateways, setGateways }) => {
         container={() => rootRef.current}
       >
         <div className="bg-white modal-child-cont">
-          <GatewaysDetails gateway={detailedView} onDelete={onDelete} />
+          <GatewaysDetails
+            gateway={detailedView}
+            onDelete={onDeleteDevice}
+            statusChange={onDeviceStatusChange}
+          />
         </div>
       </Modal>
     </div>

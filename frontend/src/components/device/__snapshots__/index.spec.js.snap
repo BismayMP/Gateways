@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details component should match snapshot 1`] = `
+<div
+  className="device"
+>
+  <p
+    className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+  >
+    name: 
+    1
+  </p>
+  <p
+    className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+  >
+    Created at: 
+    Mon Aug 02 2021
+  </p>
+  <div>
+    <div
+      className="MuiChip-root MuiChip-colorPrimary"
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+    >
+      <span
+        className="MuiChip-label"
+      >
+        online
+      </span>
+    </div>
+  </div>
+  <div
+    className="device-btns"
+  >
+    <button
+      className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-outlinedSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiButton-label"
+      >
+        Change status
+      </span>
+    </button>
+    <button
+      aria-label="delete"
+      className="MuiButtonBase-root MuiIconButton-root remove-device-btn MuiIconButton-sizeSmall"
+      disabled={false}
+      onBlur={[Function]}
+      onClick={[Function]}
+      onDragLeave={[Function]}
+      onFocus={[Function]}
+      onKeyDown={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseLeave={[Function]}
+      onMouseUp={[Function]}
+      onTouchEnd={[Function]}
+      onTouchMove={[Function]}
+      onTouchStart={[Function]}
+      tabIndex={0}
+      type="button"
+    >
+      <span
+        className="MuiIconButton-label"
+      >
+        <svg
+          aria-hidden={true}
+          className="MuiSvgIcon-root MuiSvgIcon-colorSecondary MuiSvgIcon-fontSizeSmall"
+          focusable="false"
+          viewBox="0 0 24 24"
+        >
+          <path
+            d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM19 4h-3.5l-1-1h-5l-1 1H5v2h14V4z"
+          />
+        </svg>
+      </span>
+    </button>
+  </div>
+</div>
+`;

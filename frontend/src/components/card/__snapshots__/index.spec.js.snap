@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card component should match snapshot 1`] = `
+<div
+  className="MuiPaper-root MuiCard-root card-root MuiPaper-elevation1 MuiPaper-rounded"
+>
+  <div
+    className="MuiCardContent-root"
+  >
+    <h2
+      className="MuiTypography-root card-title MuiTypography-h5 MuiTypography-colorTextPrimary"
+    >
+      test gateway
+    </h2>
+    <p
+      className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+    >
+      1.1.1.1
+    </p>
+    <p
+      className="MuiTypography-root MuiTypography-body1 MuiTypography-colorTextSecondary"
+    >
+      Peripheral devices:
+       
+      0
+    </p>
+    <div
+      className="MuiGrid-root MuiGrid-container MuiGrid-spacing-xs-2"
+    >
+      <div
+        className="MuiGrid-root MuiGrid-item"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-outlinedSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Go to details
+          </span>
+        </button>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedPrimary MuiButton-outlinedSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Add device
+          </span>
+        </button>
+      </div>
+      <div
+        className="MuiGrid-root MuiGrid-item"
+      >
+        <button
+          className="MuiButtonBase-root MuiButton-root MuiButton-outlined MuiButton-outlinedSecondary MuiButton-outlinedSizeSmall MuiButton-sizeSmall MuiButton-disableElevation"
+          disabled={false}
+          onBlur={[Function]}
+          onClick={[Function]}
+          onDragLeave={[Function]}
+          onFocus={[Function]}
+          onKeyDown={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseLeave={[Function]}
+          onMouseUp={[Function]}
+          onTouchEnd={[Function]}
+          onTouchMove={[Function]}
+          onTouchStart={[Function]}
+          tabIndex={0}
+          type="button"
+        >
+          <span
+            className="MuiButton-label"
+          >
+            Remove Gateway
+          </span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+`;

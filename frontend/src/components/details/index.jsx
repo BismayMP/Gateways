@@ -1,48 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import './index.scss'
 import { Card, Grid, Typography, CardContent } from '@material-ui/core'
 import DeviceComponent from '../device'
-import axios from 'axios'
 
-const GatewaysDetails = ({ gateway, onDelete }) => {
-  const [item, setItem] = useState(gateway)
-  const apiUrl = process.env.REACT_APP_API
-
+const GatewaysDetails = ({ gateway, onDelete, statusChange }) => {
   const handleChangeStatus = (device) => {
-    const peripheral = item.peripheral.map((item) => {
-      if (item === device) {
-        item.status = device.status === 'online' ? 'offline' : 'online'
-      }
-      return item
-    })
-    axios({
-      method: 'PUT',
-      url: `${apiUrl}gateways/${item._id}`,
-      data: {
-        ...item,
-        peripheral,
-      },
-    })
-      .then((res) => {
-        if (res.status === 200) setItem(res.data)
-      })
-      .catch((error) => console.error(error))
+    statusChange(device)
   }
 
   const handleRemoveDevice = (device) => {
-    const peripheral = item.peripheral.filter((item) => item !== device)
-    axios({
-      method: 'PUT',
-      url: `${apiUrl}gateways/${item._id}`,
-      data: {
-        ...item,
-        peripheral,
-      },
-    })
-      .then((res) => {
-        if (res.status === 200) setItem(res.data)
-      })
-      .catch((error) => console.error(error))
+    onDelete(device)
   }
 
   return (
@@ -54,7 +21,7 @@ const GatewaysDetails = ({ gateway, onDelete }) => {
           component="h3"
           align="center"
         >
-          {item.name}
+          {gateway.name}
         </Typography>
       </Grid>
       <Grid item xs={12}>
@@ -64,22 +31,23 @@ const GatewaysDetails = ({ gateway, onDelete }) => {
           component="h3"
           align="center"
         >
-          ipv4: {item.ipv4}
+          ipv4: {gateway.ipv4}
         </Typography>
       </Grid>
-      {item.peripheral.map((item, index) => (
-        <Grid item key={index}>
-          <Card className="devices-detail">
-            <CardContent>
-              <DeviceComponent
-                device={item}
-                onDelete={handleRemoveDevice}
-                onStatusChange={handleChangeStatus}
-              />
-            </CardContent>
-          </Card>
-        </Grid>
-      ))}
+      {gateway.peripheral &&
+        gateway.peripheral.map((item, index) => (
+          <Grid item key={index}>
+            <Card className="devices-detail">
+              <CardContent>
+                <DeviceComponent
+                  device={item}
+                  onDelete={handleRemoveDevice}
+                  onStatusChange={handleChangeStatus}
+                />
+              </CardContent>
+            </Card>
+          </Grid>
+        ))}
     </Grid>
   )
 }

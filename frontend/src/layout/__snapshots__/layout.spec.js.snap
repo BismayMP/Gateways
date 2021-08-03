@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Layout Component test Snapshot testing 1`] = `
+<div
+  className="MuiContainer-root MuiContainer-maxWidthLg"
+>
+  <a
+    href="/"
+  >
+    welcome
+  </a>
+</div>
+`;
