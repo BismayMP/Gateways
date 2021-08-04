@@ -26,9 +26,11 @@ const DeviceComponent = ({ device, onStatusChange, onDelete }) => {
       <Typography color="textSecondary" variant="body1" component="p">
         name: {device.vendor}
       </Typography>
-      <Typography color="textSecondary" variant="body1" component="p">
-        Created at: {formatDate(device.date)}
-      </Typography>
+      {device.date && (
+        <Typography color="textSecondary" variant="body1" component="p">
+          Created at: {formatDate(device.date)}
+        </Typography>
+      )}
       <div>
         {device.status && (
           <Chip
